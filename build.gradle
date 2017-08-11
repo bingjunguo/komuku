@@ -1,5 +1,5 @@
 group 'cn.tangyancode'
-version '3.4.1-SNAPSHOT'
+version '3.4.2-SNAPSHOT'
 
 apply plugin: 'java'
 
@@ -20,7 +20,7 @@ tasks.withType(JavaCompile) {
 sourceSets {
     main {
         java {
-            srcDirs=['Komuku-Game/src']
+            srcDirs=['Komuku-Game/src/main']
         }
     }
 }
