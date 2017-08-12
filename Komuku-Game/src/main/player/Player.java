@@ -28,7 +28,7 @@ public class Player {
             config.searchDeep = 6;
         }
         if (level == Level.VERY_HIGH) {
-            config.comboDeep = 15;
+            config.comboDeep = 11;
             config.searchDeep = 6;
         }
         game.init(map, config);

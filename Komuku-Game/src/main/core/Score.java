@@ -7,7 +7,7 @@ import helper.MapDriver;
 
 class Score {
 
-    private static int ONE = 2;
+    private static int ONE = 3;
     private static int TWO = 10;
     private static int THREE = 20;
     private static int FOUR = 30;
