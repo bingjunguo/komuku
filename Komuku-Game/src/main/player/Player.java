@@ -20,8 +20,8 @@ public class Player {
             config.searchDeep = 4;
         }
         if (level == Level.NORMAL) {
-            config.comboDeep = 7;
-            config.searchDeep = 4;
+            config.comboDeep = 0;
+            config.searchDeep = 6;
         }
         if (level == Level.HIGH) {
             config.comboDeep = 7;
@@ -45,7 +45,6 @@ public class Player {
     public Result play(Color color) {
         Result result = game.search(color);
         if (result.getMaxValue() == Integer.MIN_VALUE) {
-            game = new Game();
             config.comboDeep = 0;
             result = game.search(color);
         }

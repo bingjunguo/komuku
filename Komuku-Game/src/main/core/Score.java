@@ -10,7 +10,7 @@ class Score {
     private static int ONE = 2;
     private static int TWO = 10;
     private static int THREE = 20;
-    private static int FOUR = 50;
+    private static int FOUR = 30;
 
     private static int directX[] = {0, 1, 1, 1};
     private static int directY[] = {1, 1, 0, -1};
@@ -24,6 +24,9 @@ class Score {
     private int value = 0;
 
     void init(GameMap gameMap, Color aiColor) {
+        value = 0;
+        blackCount = new int[Config.size][Config.size][4];
+        whiteCount = new int[Config.size][Config.size][4];
         for (int i = 0; i < Config.size; i++) {
             for (int j = 0; j < Config.size; j++) {
                 Point point = new Point(i, j);

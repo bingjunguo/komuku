@@ -3,12 +3,14 @@ import core.Game;
 import entity.CountData;
 import entity.Point;
 import enumeration.Color;
+import enumeration.Level;
 import helper.MapDriver;
 import helper.WinChecker;
+import player.Player;
 
 public class Main {
 
-    private static Game game = new Game();
+    private static Player player = null;
 
     private static Color[][] map = MapDriver.readMap();
 
@@ -22,16 +24,12 @@ public class Main {
 
     private static boolean autoRun = false;
 
-    private static boolean updateFile = false;
+    private static boolean updateFile = true;
 
-    private static Color aiColor = Color.BLACK;
+    private static Color aiColor = Color.WHITE;
 
     public static void main(String[] args) {
         System.out.println("正在初始化数据...");
-        Config config = new Config();
-        config.searchDeep = 6;
-        config.comboDeep = 11;
-        game.init(map, config);
         System.out.println("开始计算...");
         if (WinChecker.win(map) != null) {
             System.out.println(WinChecker.win(map) + " win");
@@ -41,7 +39,8 @@ public class Main {
         if (!debug) {
             listen();
         }
-        result = game.search(aiColor).getPoint();
+        Player player = new Player(map, Level.HIGH);
+        result = player.play(aiColor).getPoint();
         System.out.println(result);
         map[result.getX()][result.getY()] = aiColor;
         if (updateFile) {
@@ -60,7 +59,7 @@ public class Main {
     private static void listen() {
         new Thread(() -> {
             while (true) {
-                CountData data = game.getCountData();
+                CountData data = player.getCountData();
                 if (data.getAllStep() > 0 && progress == 0) {
                     progress = data.getAllStep();
                     for (int i = 0; i < progress; i++) {

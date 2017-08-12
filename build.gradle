@@ -1,5 +1,5 @@
 group 'cn.tangyancode'
-version '3.4.2-SNAPSHOT'
+version '3.5.0-SNAPSHOT'
 
 apply plugin: 'java'
 
