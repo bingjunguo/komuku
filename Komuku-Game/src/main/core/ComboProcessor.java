@@ -52,7 +52,7 @@ public class ComboProcessor {
         }
         List<Point> rangePoints;
         rangePoints = gameMap.getNeighbor();
-        Analyzer data = new Analyzer(gameMap, color, rangePoints, score);
+        Analyzer data = new Analyzer(gameMap, color, rangePoints, score, counter);
         if (color == targetColor) {
             if (data.getFiveAttack().size() > 0) {
                 counter.countCombo++;

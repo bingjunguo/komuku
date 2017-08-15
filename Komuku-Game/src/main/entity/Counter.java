@@ -8,6 +8,8 @@ public class Counter {
 
     public int comboCacheHit;
 
+    public int analyzeTime;
+
     public int finishStep;
 
     public int allStep;

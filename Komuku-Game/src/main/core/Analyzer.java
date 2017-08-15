@@ -1,5 +1,6 @@
 package core;
 
+import entity.Counter;
 import entity.Point;
 import enumeration.Color;
 import helper.MapDriver;
@@ -17,6 +18,8 @@ public class Analyzer {
     private Score score;
 
     private Color color;
+
+    private Counter counter;
 
     private static int directX[] = {0, 1, 1, 1};
 
@@ -36,12 +39,14 @@ public class Analyzer {
 
     private Set<Point> notKey;
 
-    public Analyzer(GameMap gameMap, Color color, List<Point> points, Score score) {
+    public Analyzer(GameMap gameMap, Color color, List<Point> points, Score score, Counter counter) {
+        long time = System.currentTimeMillis();
         this.gameMap = gameMap;
         this.points = points;
         this.score = score;
         this.color = color;
         getAndDefence();
+        counter.analyzeTime += System.currentTimeMillis() - time;
     }
 
     private void getAndDefence() {
@@ -196,7 +201,7 @@ public class Analyzer {
         GameMap gameMap = new GameMap(MapDriver.readMap());
         Score score = new Score();
         score.init(gameMap, Color.WHITE);
-        Analyzer analyzer = new Analyzer(gameMap, Color.WHITE, gameMap.getNeighbor(), score);
+        Analyzer analyzer = new Analyzer(gameMap, Color.WHITE, gameMap.getNeighbor(), score, new Counter());
 
         System.out.println("FIVE A");
         System.out.println(analyzer.getFiveAttack());

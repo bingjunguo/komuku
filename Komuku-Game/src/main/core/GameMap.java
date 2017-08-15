@@ -134,22 +134,6 @@ public class GameMap {
         }
     }
 
-    public boolean checkColors(Color color, Point point, int direct, int start, int end) {
-        int x = point.getX() + start * (directX[direct]);
-        int y = point.getY() + start * (directY[direct]);
-        for (int i = start; i <= end; i++) {
-            if (!reachable(x, y)) {
-                return false;
-            }
-            if (getColor(x, y) != color) {
-                return false;
-            }
-            x += directX[direct];
-            y += directY[direct];
-        }
-        return true;
-    }
-
     List<Point> getNeighbor() {
         return new ArrayList<>(neighbor);
     }

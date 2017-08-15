@@ -47,7 +47,7 @@ public class Game {
         comboProcessor.init(gameMap, score, counter, config, cache);
 
         //只有一个扩展点的情形直接返回
-        Analyzer data = new Analyzer(gameMap, color, gameMap.getNeighbor(), score);
+        Analyzer data = new Analyzer(gameMap, color, gameMap.getNeighbor(), score, counter);
         List<Point> points = LevelProcessor.getExpandPoints(data);
         if (points.size() == 1) {
             result.add(points.get(0), 0);
@@ -94,10 +94,13 @@ public class Game {
             return getScore();
         }
         //计算扩展节点
-        Analyzer data = new Analyzer(gameMap, color, gameMap.getNeighbor(), score);
+        Analyzer data = new Analyzer(gameMap, color, gameMap.getNeighbor(), score, counter);
         //输赢判定
         if (!data.getFiveAttack().isEmpty()) {
             if (color == aiColor) {
+                if (level == config.searchDeep) {
+                    result.add(data.getFiveAttack().iterator().next(), Integer.MAX_VALUE);
+                }
                 return Integer.MAX_VALUE;
             }
             if (color == aiColor.getOtherColor()) {
